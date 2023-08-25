@@ -1,6 +1,7 @@
 package genericLibraries;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -29,14 +30,20 @@ public class ListenersImplementation implements ITestListener
 		TakesScreenshot ts=(TakesScreenshot)(BaseClass.sdriver);
 		JavaUtility jutil=new JavaUtility();
 		File src=ts.getScreenshotAs(OutputType.FILE);
-		File dest=new File("./Screenshot/" +result.getMethod().getMethodName()+".png");
-		FileUtils.copyFile(src, dest);
+		File dest=new File("./Screenshot/" +result.getMethod().getMethodName()+"_"+jutil.getCurrentTime()+".png");
+		try {
+			FileUtils.copyFile(src, dest);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
-		System.out.println(result.get);
+		System.out.println(result.getMethod().getMethodName()+"Skipped");
+		System.out.println("Skipped due to"+result.getThrowable());
 	}
 
 	@Override

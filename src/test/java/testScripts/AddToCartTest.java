@@ -9,22 +9,24 @@ import genericLibraries.BaseClass;
 
 public class AddToCartTest  extends BaseClass{
 	@Test
-	public void addtoCartTest() {
+	public void addtoCartTest() throws InterruptedException {
 		
 	
-	Map<String,String> map= excel.getData("Sheet1","Add to Cart");
+	Map<String,String> map= excel.getdata("Sheet1","Add to Cart");
 	welcome.clickLoginButton();
-	login.loginToApp((map.get("Email"),map.get("Password"));
+	login.loginDetails(map.get("Email"),map.get("Password"));
 	Thread.sleep(3000);
 	
 	home.mouseHoverToElectronics(webUtil);
 	Thread.sleep(3000);
-	home.clickHeadPhonesLink();
+	home.clickHeadphones();
 	Thread.sleep(3000);
 	
-	Assert.assertEquals(headPhone.getAddToCartText(),"ADDED");
-	String itemName =headPhones.getItemName();
-	headPhones.clickCartIcon();
+	Assert.assertEquals(headphones.getAddToCartText(),"ADDED");
+	String itemName =headphones.getItemName();
+	headphones.clickCartIcon();
+	Assert.assertTrue(cart.cartItem().equalsIgnoreCase(itemName));
+	
 	
 	
 }

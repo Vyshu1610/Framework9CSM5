@@ -3,8 +3,8 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="testScripts.AddToCartTest"/>
       <class name="testScripts.ShopperRegisterTest"/>
+      <class name="testScripts.AddToCartTest"/>
       <class name="testScripts.AddaddressTest"/>
     </classes>
   </test> <!-- Test -->
