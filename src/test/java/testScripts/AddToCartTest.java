@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import genericLibraries.BaseClass;
-
+//ADD TO CART TEST
 public class AddToCartTest  extends BaseClass{
 	@Test
 	public void addtoCartTest() throws InterruptedException {
